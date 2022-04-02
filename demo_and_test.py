@@ -1,11 +1,25 @@
 import numpy as np
+import time
+from sbar import *
+from noise_gen import *
 
-from noise_gen import var_mean_bl_mean_fit, var_mean_bl_var_fit
+import matplotlib
+import matplotlib.pyplot as plt
 
 
+noise = powerlaw_psd_gaussian(2.0, 16)
+print(np.std(noise))
+
+dt = 1.0
+length = 8
+noise = colored_noise('violet', length, dt, 2.0)
+print(np.std(noise)-2, np.std(noise))
 
 
-
+dt = 1.0
+length = 9
+noise = colored_noise('violet', length, dt, 2.0)
+print(np.std(noise)-2, np.std(noise))
 
 
 def test_bl_mean():
@@ -80,7 +94,7 @@ def test_bl_mean():
     #ax = df.plot.hist(bins=20, alpha=0.5)
     
 
-test_bl_mean()
+#test_bl_mean()
     #rint(nb, std, rem, noise.size - rem)
 #if(batches[0].size != batches[-1].size):
 #    n_add = batches[0].size - batches[-1].size    
